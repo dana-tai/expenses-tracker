@@ -20,9 +20,22 @@ const OneExpense = (props) => {
     return (
         <div>
             <h3>{oneExpense.name}</h3>
-            <p>{oneExpense.paymentMethod}</p>
-            <p>{oneExpense.category}</p>
-            <p>{oneExpense.amount}</p>
+            <table className='table border'>
+                <thead>
+                    <tr>
+                        <td>Payment Method:</td>
+                        <td>{oneExpense.paymentMethod}</td>
+                    </tr>
+                    <tr>
+                        <td>Category:</td>
+                        <td>{oneExpense.category}</td>
+                    </tr>
+                    <tr>
+                        <td>Amount:</td>
+                        <td>${oneExpense.amount}</td>
+                    </tr>
+                </thead>
+            </table>
         </div>
     )
 }
