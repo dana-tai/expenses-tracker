@@ -5,7 +5,6 @@ import axios from 'axios';
 const OneExpense = (props) => {
     const {id} = useParams();
     const[oneExpense, setOneExpense] = useState({});
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/expenses/${id}`)
