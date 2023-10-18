@@ -34,7 +34,7 @@ const Add = (props) => {
         return;
     }
         setErrorMessage("")
-        axios.post('http://localhost:8000/api/expenses', {
+        axios.post('http://localhost:8000/api/expense', {
             name,
             paymentMethod,
             category,
@@ -80,7 +80,8 @@ const Add = (props) => {
                 <label>Date: </label><br/>
                 <input type="date" onChange={(e) => setDate(e.target.value)}/>
             </p>
-            <input type="submit" value="Create"/>
+            <input type="submit" value="Create" />
+            <Link to={"/"}>Home</Link>
         </form>
         
     )
