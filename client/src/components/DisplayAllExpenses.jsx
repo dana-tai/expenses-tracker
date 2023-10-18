@@ -13,7 +13,17 @@ const DisplayAllExpenses = (props) => {
         .catch((err)=> {
             console.log(err);
         })
-    }, [])
+    }, [expenses])
+
+    const deleteHandler = (id) => {
+        axios.delete(`http://localhost:8000/api/expenses/${id}`)
+            .then((res) => {
+                navigate('/')
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
 
     return (
@@ -26,6 +36,7 @@ const DisplayAllExpenses = (props) => {
                         <th>Payment Method</th>
                         <th>Category</th>
                         <th>Amount</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,11 +47,13 @@ const DisplayAllExpenses = (props) => {
                                 <td>{expense.paymentMethod}</td>
                                 <td>{expense.category}</td>
                                 <td>{expense.amount}</td>
+                                <td><button onClick={(e) => {deleteHandler(expense._id)}}>Delete</button></td>
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
+            <button><Link to={'/addExpense'}>Add an Expense</Link></button>
         </div>
     )
 
