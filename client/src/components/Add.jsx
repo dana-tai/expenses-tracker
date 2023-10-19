@@ -34,7 +34,7 @@ const Add = (props) => {
         return;
     }
         setErrorMessage("")
-        axios.post('http://localhost:8000/api/expense', {
+        axios.post('http://localhost:8000/api/expenses', {
             name,
             paymentMethod,
             category,
