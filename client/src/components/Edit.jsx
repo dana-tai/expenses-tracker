@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Edit = (props) => {
+    const { id } = useParams();
     const { expense, setExpense } = props;
     const [name, setName] = useState("");
     const [paymentMethod, setpaymentMethod] = useState("");
@@ -12,7 +13,7 @@ const Edit = (props) => {
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get('http://localhost:8000/api/expense/' + id)
+        axios.get('http://localhost:8000/api/expenses/' + id)
             .then(res => {
                 setName(res.data.name);
                 setpaymentMethod(res.data.paymentMethod);
@@ -24,7 +25,7 @@ const Edit = (props) => {
     }, [])
     const updateExpense = (e) => {
         e.preventDefault();
-        axios.patch('http://localhost:8000/api/expense/' + id, {
+        axios.patch('http://localhost:8000/api/expenses/' + id, {
             name,    
             paymentMethod,
             category,
