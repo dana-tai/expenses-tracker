@@ -29,6 +29,10 @@ const Add = (props) => {
         setErrorMessage("Amount is required");
         return;
     }
+    if (amount<=0) {
+        setErrorMessage("Amount must be greater than 0");
+        return;
+    }
     if (!date) {
         setErrorMessage("Date is required");
         return;
@@ -58,31 +62,39 @@ const Add = (props) => {
 
 
     return (
-        <form onSubmit={onSubmitHandler}>
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-            <p>
-                <label>Expenses Name: </label><br />
-                <input type="text" onChange={(e) => setName(e.target.value)} />
-            </p>
-            <p>
-                <label>Payment Method: </label><br />
-                <input type="text" onChange={(e) => setpaymentMethod(e.target.value)} />
-            </p>
-            <p>
-                <label>Amount</label><br/>
-                <input type='text' onChange={(e) => setAmount(e.target.value)}/>
-            </p>
-            <p>
-                <label>Category: </label><br/>
-                <input type="text" onChange={(e) => setCategory(e.target.value)}/>
-            </p>
-            <p>
-                <label>Date: </label><br/>
-                <input type="date" onChange={(e) => setDate(e.target.value)}/>
-            </p>
-            <input type="submit" value="Create" />
-            <Link to={"/"}>Home</Link>
-        </form>
+        <div className='border p-4'>
+            <h3>Add an Expense</h3>
+            <form onSubmit={onSubmitHandler}>
+                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                <p>
+                    <label>Expenses Name: </label><br />
+                    <input type="text" onChange={(e) => setName(e.target.value)} />
+                </p>
+                <p>
+                    <label>Payment Method: </label><br />
+                    <select value={paymentMethod} onChange={(e) => setpaymentMethod(e.target.value)}>
+                        <option value="">Select an option</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Credit">Credit</option>
+                        <option value="Venmo">Venmo</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Amount:</label><br/>
+                    <input type='number' onChange={(e) => setAmount(e.target.value)}/>
+                </p>
+                <p>
+                    <label>Category: </label><br/>
+                    <input type="text" onChange={(e) => setCategory(e.target.value)}/>
+                </p>
+                <p>
+                    <label>Date: </label><br/>
+                    <input type="date" onChange={(e) => setDate(e.target.value)}/>
+                </p>
+                <input type="submit" value="Create" />
+            </form>
+        </div>
         
     )
     

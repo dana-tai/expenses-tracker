@@ -18,9 +18,9 @@ const OneExpense = (props) => {
     }, [id])
 
     return (
-        <div>
+        <div className='d-flex row justify-content-center'>
             <h3>{oneExpense.name}</h3>
-            <table className='table border'>
+            <table className=' w-50 table border'>
                 <thead>
                     <tr>
                         <td>Payment Method:</td>

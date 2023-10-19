@@ -6,6 +6,7 @@ import OneExpense from './components/OneExpense'
 import NavBar from './components/NavBar'
 import Add from './components/Add'
 import Edit from './components/Edit'
+import Main from './components/Main'
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
     <div>
       <NavBar/>
       <Routes>
-        <Route index element={<DisplayAllExpenses/>}></Route>
+        <Route index element={<Main/>}></Route>
         <Route path='/oneExpense/:id' element={<OneExpense/>}></Route>
         <Route path='/addExpense' element={<Add/>}></Route>
         <Route path='/editExpense/:id' element={<Edit/>}></Route>
