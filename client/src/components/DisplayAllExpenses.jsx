@@ -4,6 +4,15 @@ import {Link} from 'react-router-dom';
 
 const DisplayAllExpenses = (props) => {
     const[expenses, setExpenses] = useState([]);
+    
+    const totalCount = () => {
+        let total = 0;
+        expenses.map((expense) => (
+            total += expense.amount)
+        )
+        return total;
+    }
+
 
     useEffect (() => {
         axios.get('http://localhost:8000/api/expenses')
@@ -51,6 +60,13 @@ const DisplayAllExpenses = (props) => {
                             </tr>
                         ))
                     }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total: <span style={{ color: 'red' }}>${totalCount()}</span></td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
             <button><Link to={'/addExpense'}>Add an Expense</Link></button>
