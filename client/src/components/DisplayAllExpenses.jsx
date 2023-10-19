@@ -60,7 +60,7 @@ const DisplayAllExpenses = (props) => {
                             </tr>
                         ))
                     }
-                    <tr>
+                    <tr className="table-info">
                         <td></td>
                         <td></td>
                         <td></td>

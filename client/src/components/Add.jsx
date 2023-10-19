@@ -10,7 +10,9 @@ const Add = (props) => {
     const [amount, setAmount] = useState("")
     const [date, setDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState(false);
     const navigate = useNavigate();
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
     if (!name.trim()) {
@@ -48,6 +50,10 @@ const Add = (props) => {
             .then (res => {
                 console.log(res);
                 console.log(res.data);
+                setSuccessMessage(true);
+                setTimeout(() => {
+                    setSuccessMessage(false);
+                }, 3000);
                 setName("");
                 setpaymentMethod("");
                 setCategory("");
@@ -66,9 +72,10 @@ const Add = (props) => {
             <h3>Add an Expense</h3>
             <form onSubmit={onSubmitHandler}>
                 {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                {successMessage && <p style={{ color: 'green', backgroundColor: '#E7FFE7'}}>Expense submitted successfully!</p>}
                 <p>
                     <label>Expenses Name: </label><br />
-                    <input type="text" onChange={(e) => setName(e.target.value)} />
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                 </p>
                 <p>
                     <label>Payment Method: </label><br />
@@ -82,15 +89,15 @@ const Add = (props) => {
                 </p>
                 <p>
                     <label>Amount:</label><br/>
-                    <input type='number' onChange={(e) => setAmount(e.target.value)}/>
+                    <input type='number' value={amount} onChange={(e) => setAmount(e.target.value)}/>
                 </p>
                 <p>
                     <label>Category: </label><br/>
-                    <input type="text" onChange={(e) => setCategory(e.target.value)}/>
+                    <input type="text" value={category} onChange={(e) => setCategory(e.target.value)}/>
                 </p>
                 <p>
                     <label>Date: </label><br/>
-                    <input type="date" onChange={(e) => setDate(e.target.value)}/>
+                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 </p>
                 <input type="submit" value="Create" />
             </form>
