@@ -69,7 +69,6 @@ const DisplayAllExpenses = (props) => {
                     </tr>
                 </tbody>
             </table>
-            <button><Link to={'/addExpense'}>Add an Expense</Link></button>
         </div>
     )
 
