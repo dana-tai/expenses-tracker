@@ -46,8 +46,8 @@ const DisplayAllExpenses = (props) => {
                                 <td><Link to={`/oneExpense/` + expense._id}>{expense.name}</Link></td>
                                 <td>{expense.paymentMethod}</td>
                                 <td>{expense.category}</td>
-                                <td>{expense.amount}</td>
-                                <td><button><Link to={`/editExpense/` + expense._id}>Edit</Link></button><button onClick={(e) => {deleteHandler(expense._id)}}>Delete</button></td>
+                                <td>${expense.amount}</td>
+                                <td><button><Link to={`/editExpense/` + expense._id}>Edit</Link></button><button style={{ color: 'red' }} onClick={(e) => {deleteHandler(expense._id)}}><u>Delete</u></button></td>
                             </tr>
                         ))
                     }

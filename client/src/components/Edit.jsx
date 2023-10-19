@@ -25,7 +25,7 @@ const Edit = (props) => {
     }, [])
     const updateExpense = (e) => {
         e.preventDefault();
-        axios.patch('http://localhost:8000/api/expenses/' + id, {
+        axios.put('http://localhost:8000/api/expenses/' + id, {
             name,    
             paymentMethod,
             category,
@@ -43,26 +43,31 @@ const Edit = (props) => {
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <p>
                 <label>Expenses Name: </label><br />
-                <input type="text" onChange={(e) => setName(e.target.value)} />
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </p>
             <p>
                 <label>Payment Method: </label><br />
-                <input type="text" onChange={(e) => setpaymentMethod(e.target.value)} />
+                <select value={paymentMethod} onChange={(e) => setpaymentMethod(e.target.value)}>
+                    <option value="">Select an option</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Credit">Credit</option>
+                    <option value="Venmo">Venmo</option>
+                    <option value="Other">Other</option>
+                </select>
             </p>
             <p>
                 <label>Amount</label><br/>
-                <input type='text' onChange={(e) => setAmount(e.target.value)}/>
+                <input type='number' value={amount} onChange={(e) => setAmount(e.target.value)}/>
             </p>
             <p>
                 <label>Category: </label><br/>
-                <input type="text" onChange={(e) => setCategory(e.target.value)}/>
+                <input type="text" value={category} onChange={(e) => setCategory(e.target.value)}/>
             </p>
             <p>
                 <label>Date: </label><br/>
                 <input type="date" onChange={(e) => setDate(e.target.value)}/>
             </p>
-            <input type="submit" value="Create" />
-            <Link to={"/"}>Home</Link>
+            <input type="submit" value="Update" />
         </form>
     )
 }
